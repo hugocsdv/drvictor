@@ -2,12 +2,7 @@
 
 import { useState } from "react";
 
-import {
-  Container,
-  Header,
-  Subtitle,
-  Title,
-} from "./Procedures.styles";
+import { Container, Header, Subtitle, Title } from "./Procedures.styles";
 
 import CategoryTabs from "./CategoryTabs/CategoryTabs";
 import ProcedureCarousel from "./ProcedureCarousel/ProcedureCarousel";
@@ -17,7 +12,6 @@ import { procedures } from "./data/data";
 import { Procedure } from "./types/Procedure";
 
 export default function Procedures() {
-
   const categories = [
     "Todos",
     "Corpo",
@@ -28,40 +22,24 @@ export default function Procedures() {
     "Pós-Bariátrica",
   ];
 
-
   const [activeCategory, setActiveCategory] = useState("Todos");
 
-
-  const [selectedProcedure, setSelectedProcedure] = useState(
-    procedures[0]
-  );
-
+  const [selectedProcedure, setSelectedProcedure] = useState(procedures[0]);
 
   const filteredProcedures =
     activeCategory === "Todos"
       ? procedures
       : procedures.filter(
-          (procedure: Procedure) =>
-            procedure.category === activeCategory
+          (procedure: Procedure) => procedure.category === activeCategory,
         );
-
 
   return (
     <Container>
-
       <Header>
+        <Subtitle>Especialidades</Subtitle>
 
-        <Subtitle>
-          Especialidades
-        </Subtitle>
-
-
-        <Title>
-          Procedimentos pensados para valorizar sua beleza
-        </Title>
-
+        <Title>Procedimentos pensados para valorizar sua beleza</Title>
       </Header>
-
 
       <CategoryTabs
         categories={categories}
@@ -69,27 +47,13 @@ export default function Procedures() {
         onChange={setActiveCategory}
       />
 
-
-
       <ProcedureCarousel
-
         procedures={filteredProcedures}
-
         selectedProcedure={selectedProcedure}
-
         onSelect={setSelectedProcedure}
-
       />
 
-
-
-      <ProcedureDetails
-
-        procedure={selectedProcedure}
-
-      />
-
-
+      <ProcedureDetails procedure={selectedProcedure} />
     </Container>
   );
 }

@@ -39,7 +39,87 @@ export const procedures: Procedure[] = [
 
   {
     id: 3,
+    category: "Corpo",
+    title: "Blefaroplastia",
+    description:
+      "Tratamento das pálpebras para um olhar mais jovem e descansado.",
+    image: "/images/blefaroplastia.png",
+    benefits: [
+      "Rejuvenescimento do olhar",
+      "Redução de excesso de pele"
+    ],
+    indications: [
+      "Pálpebras caídas",
+      "Bolsas abaixo dos olhos"
+    ],
+  },
+  {
+    id: 4,
     category: "Olhos",
+    title: "Blefaroplastia",
+    description:
+      "Tratamento das pálpebras para um olhar mais jovem e descansado.",
+    image: "/images/blefaroplastia.png",
+    benefits: [
+      "Rejuvenescimento do olhar",
+      "Redução de excesso de pele"
+    ],
+    indications: [
+      "Pálpebras caídas",
+      "Bolsas abaixo dos olhos"
+    ],
+  },
+  {
+    id: 5,
+    category: "Nariz",
+    title: "Blefaroplastia",
+    description:
+      "Tratamento das pálpebras para um olhar mais jovem e descansado.",
+    image: "/images/blefaroplastia.png",
+    benefits: [
+      "Rejuvenescimento do olhar",
+      "Redução de excesso de pele"
+    ],
+    indications: [
+      "Pálpebras caídas",
+      "Bolsas abaixo dos olhos"
+    ],
+  },
+  {
+    id: 6,
+    category: "Corpo",
+    title: "Blefaroplastia",
+    description:
+      "Tratamento das pálpebras para um olhar mais jovem e descansado.",
+    image: "/images/blefaroplastia.png",
+    benefits: [
+      "Rejuvenescimento do olhar",
+      "Redução de excesso de pele"
+    ],
+    indications: [
+      "Pálpebras caídas",
+      "Bolsas abaixo dos olhos"
+    ],
+  },
+  {
+    id: 7,
+    category: "Face",
+    title: "Blefaroplastia",
+    description:
+      "Tratamento das pálpebras para um olhar mais jovem e descansado.",
+    image: "/images/blefaroplastia.png",
+    benefits: [
+      "Rejuvenescimento do olhar",
+      "Redução de excesso de pele"
+    ],
+    indications: [
+      "Pálpebras caídas",
+      "Bolsas abaixo dos olhos"
+    ],
+  },
+  {
+    id: 8,
+    category: "Mama",
     title: "Blefaroplastia",
     description:
       "Tratamento das pálpebras para um olhar mais jovem e descansado.",
