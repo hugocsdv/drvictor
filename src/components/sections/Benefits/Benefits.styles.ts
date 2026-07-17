@@ -12,7 +12,6 @@ export const Container = styled.section`
   padding: 12px;
 
   position: relative;
-
 `;
 
 export const Wrapper = styled.div`
@@ -27,7 +26,6 @@ export const Wrapper = styled.div`
   display: grid;
 
   grid-template-columns: repeat(4, 1fr);
-
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     grid-template-columns: repeat(2, 1fr);
@@ -73,7 +71,6 @@ export const Number = styled.h2`
   transition: ${({ theme }) => theme.transition.default};
 `;
 
-
 export const Card = styled.div`
   display: flex;
 
@@ -91,11 +88,9 @@ export const Card = styled.div`
 
   cursor: pointer;
 
-
   &:last-child {
     border-right: none;
   }
-
 
   &:hover {
     transform: translateY(-5px);
@@ -106,19 +101,16 @@ export const Card = styled.div`
 
     box-shadow: ${({ theme }) => theme.shadow.sm};
 
-
     ${Icon} {
       color: ${({ theme }) => theme.colors.secondary};
 
       transform: scale(1.1);
     }
 
-
     ${Number} {
       color: ${({ theme }) => theme.colors.primary};
     }
   }
-
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     border-right: none;
@@ -130,9 +122,6 @@ export const Card = styled.div`
     }
   }
 `;
-
-
-
 
 export const Content = styled.div`
   display: flex;

@@ -50,20 +50,7 @@ export default function Hero() {
 
       </HeroContent>
 
-      <ImageContainer>
-
-        <Image
-          src="/images/doctor.png"
-          alt="Doutor"
-          fill
-          priority
-          style={{
-            objectFit: "contain",
-          }}
-        />
-
-      </ImageContainer>
-
+    
     </HeroContainer>
   );
 }
