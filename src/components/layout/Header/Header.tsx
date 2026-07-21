@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import {
   Container,
   Wrapper,
@@ -9,12 +10,14 @@ import {
   NavItem,
   Actions,
   Button,
+  MenuButton,
+  MobileMenu,
 } from "./Header.styles";
-import { useEffect, useState } from "react";
 
 export default function Header() {
-
   const [scrolled, setScrolled] = useState(false);
+
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     function handleScroll() {
@@ -28,24 +31,20 @@ export default function Header() {
     };
   }, []);
 
+  function closeMenu() {
+    setOpen(false);
+  }
+
   return (
     <Container>
-
       <Wrapper $scrolled={scrolled}>
-
         <Logo>
-
-          <Image
-            src="/images/logo.png"
-            alt="Logo"
-            width={45}
-            height={45}
-          />
-
+          <Image src="/images/logo.png" alt="Logo" width={45} height={45} />
         </Logo>
 
-        <Nav>
+        {/* DESKTOP */}
 
+        <Nav>
           <NavItem href="/">Início</NavItem>
 
           <NavItem href="/sobre">Sobre</NavItem>
@@ -55,19 +54,44 @@ export default function Header() {
           <NavItem href="/blog">Blog</NavItem>
 
           <NavItem href="/contato">Contato</NavItem>
-
         </Nav>
 
         <Actions>
-
-          <Button>
-            Agendar Consulta
-          </Button>
-
+          <Button>Agendar Consulta</Button>
         </Actions>
 
+        {/* MOBILE BUTTON */}
+
+        <MenuButton onClick={() => setOpen(!open)} aria-label="Abrir menu">
+          {open ? "✕" : "☰"}
+        </MenuButton>
       </Wrapper>
 
+      {/* MOBILE MENU */}
+
+      <MobileMenu $open={open}>
+        <NavItem href="/" onClick={closeMenu}>
+          Início
+        </NavItem>
+
+        <NavItem href="/sobre" onClick={closeMenu}>
+          Sobre
+        </NavItem>
+
+        <NavItem href="/procedimentos" onClick={closeMenu}>
+          Procedimentos
+        </NavItem>
+
+        <NavItem href="/blog" onClick={closeMenu}>
+          Blog
+        </NavItem>
+
+        <NavItem href="/contato" onClick={closeMenu}>
+          Contato
+        </NavItem>
+
+        <Button>Agendar Consulta</Button>
+      </MobileMenu>
     </Container>
   );
 }

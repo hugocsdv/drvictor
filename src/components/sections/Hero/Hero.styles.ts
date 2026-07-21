@@ -31,13 +31,9 @@ export const HeroContainer = styled.section`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     min-height: auto;
-
     padding: ${({ theme }) => theme.spacing.xxxl} ${({ theme }) => theme.spacing.lg};
-
     flex-direction: column;
-
     justify-content: center;
-
     text-align: center;
   }
 
