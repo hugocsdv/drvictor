@@ -20,7 +20,7 @@ export const NavigationButton = styled.button`
 
   border: 1px solid ${({ theme }) => theme.colors.primary};
 
-  background: #fff;
+  background: ${({ theme }) => theme.colors.primary};
 
   color: ${({ theme }) => theme.colors.primary};
 

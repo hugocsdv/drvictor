@@ -23,7 +23,7 @@ export const CategoryButton = styled.button<{ $active: boolean }>`
       $active ? theme.colors.primary : "#E5E5E5"};
 
   background: ${({ $active, theme }) =>
-    $active ? theme.colors.primary : "#FFF"};
+    $active ? theme.colors.primary : theme.colors.surface};
 
   color: ${({ $active, theme }) =>
     $active ? "#FFF" : theme.colors.text};

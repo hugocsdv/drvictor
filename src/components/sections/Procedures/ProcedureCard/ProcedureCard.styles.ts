@@ -11,7 +11,7 @@ export const Card = styled.article<{ $selected: boolean }>`
 
   overflow: hidden;
 
-  background: white;
+  background: ${({ theme }) => theme.colors.complement};
 
   cursor: pointer;
 
