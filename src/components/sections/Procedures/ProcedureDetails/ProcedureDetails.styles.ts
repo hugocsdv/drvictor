@@ -4,15 +4,21 @@ import styled from "styled-components";
 
 export const Container = styled.section`
   max-width: 1200px;
+
   margin: 50px auto;
-  background: #fff;
-  border-radius: 24px;
+
+  background: ${({ theme }) => theme.colors.surface};
+
+  border-radius: ${({ theme }) => theme.radius.lg};
+
   overflow: hidden;
-  box-shadow: 0 10px 40px rgba(0,0,0,.06);
+
+  box-shadow: ${({ theme }) => theme.shadow.md};
 `;
 
 export const Hero = styled.div`
   display: grid;
+
   grid-template-columns: 1fr 480px;
 
   min-height: 330px;
@@ -22,35 +28,34 @@ export const Hero = styled.div`
   }
 `;
 
-
 export const HeroContent = styled.div`
   padding: 45px 60px;
 
   display:flex;
+
   flex-direction:column;
+
   justify-content:center;
 `;
 
-
 export const Category = styled.span`
-  color:#b27a45;
+  color: ${({ theme }) => theme.colors.primary};
 
-  font-size:14px;
+  font-size: ${({ theme }) => theme.fontSize.sm};
 
   font-weight:600;
 
   margin-bottom:15px;
 `;
 
-
 export const Title = styled.h1`
-  font-family: serif;
+  font-family: ${({ theme }) => theme.fonts.heading};
 
-  font-size:48px;
+  font-size: ${({ theme }) => theme.fontSize.h1};
 
   font-weight:500;
 
-  color:#252525;
+  color: ${({ theme }) => theme.colors.text};
 
   margin-bottom:18px;
 
@@ -60,15 +65,13 @@ export const Title = styled.h1`
   }
 `;
 
-
 export const Description = styled.p`
-  color:#666;
+  color: ${({ theme }) => theme.colors.textSecondary};
 
   line-height:1.8;
 
   max-width:600px;
 `;
-
 
 export const ImageContainer = styled.div`
   position:relative;
@@ -76,15 +79,14 @@ export const ImageContainer = styled.div`
   min-height:330px;
 `;
 
-
-
 export const InfoGrid = styled.div`
   display:grid;
 
   grid-template-columns:repeat(4,1fr);
 
-  border-top:1px solid #eee;
-  border-bottom:1px solid #eee;
+  border-top:1px solid ${({ theme }) => theme.colors.border};
+
+  border-bottom:1px solid ${({ theme }) => theme.colors.border};
 
   padding:25px 60px;
 
@@ -94,7 +96,6 @@ export const InfoGrid = styled.div`
   }
 `;
 
-
 export const InfoItem = styled.div`
   display:flex;
 
@@ -102,16 +103,15 @@ export const InfoItem = styled.div`
 
   gap:6px;
 
-  color:#777;
+  color:${({ theme }) => theme.colors.textSecondary};
+
 
   span{
-    color:#222;
+    color:${({ theme }) => theme.colors.text};
 
     font-weight:600;
   }
 `;
-
-
 
 export const Tabs = styled.div`
   display:flex;
@@ -120,11 +120,10 @@ export const Tabs = styled.div`
 
   padding:20px 60px;
 
-  border-bottom:1px solid #eee;
+  border-bottom:1px solid ${({ theme }) => theme.colors.border};
 
   overflow:auto;
 `;
-
 
 export const Tab = styled.button`
   background:none;
@@ -133,20 +132,28 @@ export const Tab = styled.button`
 
   cursor:pointer;
 
-  color:#444;
+  color:${({ theme }) => theme.colors.textSecondary};
 
-  font-size:15px;
+  font-size:${({ theme }) => theme.fontSize.sm};
 
   white-space:nowrap;
 
+  transition:${({ theme }) => theme.transition.default};
+
+
+  &:hover{
+    color:${({ theme }) => theme.colors.primary};
+  }
+
+
   &:first-child{
-    color:#a86f38;
-    border-bottom:2px solid #a86f38;
+    color:${({ theme }) => theme.colors.primary};
+
+    border-bottom:2px solid ${({ theme }) => theme.colors.primary};
+
     padding-bottom:15px;
   }
 `;
-
-
 
 export const Body = styled.div`
   display:grid;
@@ -163,23 +170,21 @@ export const Body = styled.div`
   }
 `;
 
-
 export const SectionTitle = styled.h3`
-  font-size:20px;
+  font-size:${({ theme }) => theme.fontSize.lg};
+
+  color:${({ theme }) => theme.colors.text};
 
   margin-bottom:20px;
 `;
 
-
 export const Text = styled.p`
-  color:#666;
+  color:${({ theme }) => theme.colors.textSecondary};
 
   line-height:1.8;
 
   margin-bottom:25px;
 `;
-
-
 
 export const List = styled.ul`
   display:grid;
@@ -188,11 +193,11 @@ export const List = styled.ul`
 
   gap:15px;
 
-  background:#faf5ef;
+  background:${({ theme }) => theme.colors.complement};
 
   padding:25px;
 
-  border-radius:15px;
+  border-radius:${({ theme }) => theme.radius.md};
 
   list-style:none;
 
@@ -202,50 +207,51 @@ export const List = styled.ul`
   }
 `;
 
-
 export const ListItem = styled.li`
-  color:#555;
+  color:${({ theme }) => theme.colors.textSecondary};
+
 
   &:before{
     content:"✓";
 
-    color:#b27a45;
+    color:${({ theme }) => theme.colors.primary};
 
     margin-right:8px;
   }
 `;
 
-
-
 export const Aside = styled.aside`
-  background:#faf8f5;
+  background:${({ theme }) => theme.colors.background};
 
-  border-radius:18px;
+  border-radius:${({ theme }) => theme.radius.md};
 
   padding:30px;
 
   height:max-content;
-`;
 
+  border:1px solid ${({ theme }) => theme.colors.border};
+`;
 
 export const Button = styled.button`
   width:100%;
 
   padding:15px;
 
-  border-radius:30px;
+  border-radius:${({ theme }) => theme.radius.pill};
 
   border:none;
 
-  background:#a96d36;
+  background:${({ theme }) => theme.colors.primary};
 
-  color:white;
+  color:${({ theme }) => theme.colors.surface};
 
-  font-size:16px;
+  font-size:${({ theme }) => theme.fontSize.md};
 
   cursor:pointer;
 
   margin-top:20px;
+
+  transition:${({ theme }) => theme.transition.default};
 
 
   &:hover{

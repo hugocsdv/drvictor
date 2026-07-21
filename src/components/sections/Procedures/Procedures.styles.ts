@@ -35,7 +35,7 @@ export const Subtitle = styled.span`
 export const Title = styled.h2`
   font-family: ${({ theme }) => theme.fonts.heading};
 
-  font-size: ${({ theme }) => theme.fontSize.md};
+  font-size: ${({ theme }) => theme.fontSize.h2};
 
   color: ${({ theme }) => theme.colors.text};
 
@@ -55,7 +55,7 @@ export const Grid = styled.div`
 
   grid-template-columns: repeat(6, 1fr);
 
-  gap: 12px;
+  gap: ${({ theme }) => theme.spacing.md};
 
   @media (max-width: 1200px) {
     grid-template-columns: repeat(3, 1fr);
@@ -67,9 +67,9 @@ export const Grid = styled.div`
 `;
 
 export const Card = styled.article`
-  background: #faf8f5;
+  background: ${({ theme }) => theme.colors.surface};
 
-  border-radius: 8px;
+  border-radius: ${({ theme }) => theme.radius.md};
 
   overflow: hidden;
 
@@ -77,10 +77,14 @@ export const Card = styled.article`
 
   position: relative;
 
-  transition: 0.3s;
+  border: 1px solid ${({ theme }) => theme.colors.border};
+
+  transition: ${({ theme }) => theme.transition.default};
 
   &:hover {
     transform: translateY(-6px);
+
+    box-shadow: ${({ theme }) => theme.shadow.md};
   }
 `;
 
@@ -94,7 +98,7 @@ export const ImageBox = styled.div`
   overflow: hidden;
 
   img {
-    transition: 0.4s;
+    transition: ${({ theme }) => theme.transition.default};
   }
 
   ${Card}:hover & img {
@@ -109,9 +113,9 @@ export const IconCircle = styled.div`
 
   height: 52px;
 
-  border-radius: 50%;
+  border-radius: ${({ theme }) => theme.radius.pill};
 
-  background: white;
+  background: ${({ theme }) => theme.colors.surface};
 
   bottom: -26px;
 
@@ -125,11 +129,11 @@ export const IconCircle = styled.div`
 
   justify-content: center;
 
-  border: 1px solid #eee;
+  border: 1px solid ${({ theme }) => theme.colors.border};
 
-  color: #b69a7d;
+  color: ${({ theme }) => theme.colors.primary};
 
-  font-size: 22px;
+  font-size: ${({ theme }) => theme.fontSize.xl};
 
   z-index: 2;
 `;
@@ -141,7 +145,7 @@ export const Content = styled.div`
 export const CardTitle = styled.h3`
   font-family: ${({ theme }) => theme.fonts.heading};
 
-  font-size: 18px;
+  font-size: ${({ theme }) => theme.fontSize.lg};
 
   color: ${({ theme }) => theme.colors.text};
 
@@ -151,7 +155,7 @@ export const CardTitle = styled.h3`
 `;
 
 export const Description = styled.p`
-  font-size: 13px;
+  font-size: ${({ theme }) => theme.fontSize.sm};
 
   line-height: 1.5;
 
@@ -163,13 +167,13 @@ export const ButtonContainer = styled.div`
 
   justify-content: center;
 
-  margin-top: 40px;
+  margin-top: ${({ theme }) => theme.spacing.xl};
 `;
 
 export const LinkButton = styled.button`
   padding: 12px 35px;
 
-  border-radius: 30px;
+  border-radius: ${({ theme }) => theme.radius.pill};
 
   border: 1px solid ${({ theme }) => theme.colors.primary};
 
@@ -178,12 +182,14 @@ export const LinkButton = styled.button`
   color: ${({ theme }) => theme.colors.primary};
 
   cursor: pointer;
+
   margin-top: 5px;
-  transition: 0.3s;
+
+  transition: ${({ theme }) => theme.transition.default};
 
   &:hover {
     background: ${({ theme }) => theme.colors.primary};
 
-    color: white;
+    color: ${({ theme }) => theme.colors.surface};
   }
 `;

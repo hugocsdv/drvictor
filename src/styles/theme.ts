@@ -19,7 +19,7 @@ const theme = {
   fonts: {
     heading: "Verdana, sans-serif",
     body: "Verdana, sans-serif",
-    },
+  },
 
   spacing: {
     xs: "4px",

@@ -4,13 +4,16 @@ import styled from "styled-components";
 
 export const CarouselContainer = styled.div`
   display: flex;
+
   align-items: center;
-  gap: 20px;
+
+  gap: ${({ theme }) => theme.spacing.lg};
 `;
 
 export const CarouselTrack = styled.div`
   display: flex;
-  gap: 18px;
+
+  gap: ${({ theme }) => theme.spacing.md};
 
   flex: 1;
 
@@ -27,26 +30,29 @@ export const CarouselTrack = styled.div`
 
 export const NavigationButton = styled.button`
   width: 46px;
+
   height: 46px;
 
-  border-radius: 50%;
+  border-radius: ${({ theme }) => theme.radius.pill};
 
   border: 1px solid ${({ theme }) => theme.colors.primary};
 
-  background: white;
+  background: ${({ theme }) => theme.colors.surface};
 
   color: ${({ theme }) => theme.colors.primary};
 
-  font-size: 22px;
+  font-size: ${({ theme }) => theme.fontSize.xl};
 
   cursor: pointer;
 
   flex-shrink: 0;
 
-  transition: .2s;
+  transition: ${({ theme }) => theme.transition.default};
+
 
   &:hover {
     background: ${({ theme }) => theme.colors.primary};
-    color: white;
+
+    color: ${({ theme }) => theme.colors.surface};
   }
 `;
