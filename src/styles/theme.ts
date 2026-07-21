@@ -26,9 +26,12 @@ const theme = {
     sm: "8px",
     md: "16px",
     lg: "24px",
-    xl: "32px",
-    xxl: "48px",
-    xxxl: "64px",
+
+    xl: "clamp(24px,4vw,32px)",
+
+    xxl: "clamp(32px,6vw,48px)",
+
+    xxxl: "clamp(48px,8vw,64px)",
   },
 
   zIndex: {
@@ -43,9 +46,15 @@ const theme = {
     md: "16px",
     lg: "18px",
     xl: "20px",
-    h1: "72px",
-    h2: "56px",
-    h3: "40px",
+
+    // responsivos
+    h1: "clamp(36px, 7vw, 72px)",
+
+    h2: "clamp(32px, 5vw, 56px)",
+
+    h3: "clamp(26px, 4vw, 40px)",
+
+    display: "clamp(40px, 8vw, 88px)",
   },
 
   radius: {
@@ -66,8 +75,10 @@ const theme = {
   },
 
   breakpoints: {
-    mobile: "768px",
-    tablet: "1024px",
+    mobile: "480px",
+
+    tablet: "768px",
+
     desktop: "1400px",
   },
 };
