@@ -16,14 +16,14 @@ export const HeroContainer = styled.section`
   overflow: hidden;
 
   background-image:
-    linear-gradient(
-      100deg,
-      ${({ theme }) => theme.colors.background} 0%,
-      rgba(248, 246, 243, 0.9) 35%,
-      rgba(248, 246, 243, 0.45) 55%,
-      rgba(248, 246, 243, 0.05) 65%
-    ),
-    url("/header-dr-victor-guida-franca.jpg");
+  linear-gradient(
+    100deg,
+    ${({theme}) => theme.colors.background} 0%,
+    ${({theme}) => theme.colors.background}dd 35%,
+    ${({theme}) => theme.colors.background}88 52%,
+    transparent 75%
+  ),
+  url("/header-dr-victor-guida-franca.jpg");
 
   background-repeat: no-repeat;
   background-size: cover;
