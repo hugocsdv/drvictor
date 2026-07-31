@@ -19,9 +19,9 @@ export const HeroContainer = styled.section`
   linear-gradient(
     100deg,
     ${({theme}) => theme.colors.background} 0%,
-    ${({theme}) => theme.colors.background}dd 35%,
-    ${({theme}) => theme.colors.background}88 52%,
-    transparent 75%
+    ${({theme}) => theme.colors.background}dd 30%,
+    ${({theme}) => theme.colors.background}88 50%,
+    transparent 70%
   ),
   url("/header-dr-victor-guida-franca.jpg");
 
