@@ -22,9 +22,11 @@ export const Subtitle = styled.span`
 `;
 
 export const Title = styled.h2`
-  margin: ${({ theme }) => theme.spacing.md} 0;
-  font-size: ${({ theme }) => theme.fontSize.h2};
+
+  font-size: ${({ theme }) => theme.fontSize.h3};
   color: ${({ theme }) => theme.colors.text};
+  font-family: ${({ theme }) => theme.fonts.heading};
+  font-weight: 500;
 `;
 
 export const Description = styled.p`

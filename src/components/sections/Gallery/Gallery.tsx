@@ -37,7 +37,7 @@ export default function Gallery() {
 
         <Description>
           Cada paciente é único. Confira alguns procedimentos realizados pelo
-          Dr. João Silva.
+          Dr. Victor Guida.
         </Description>
       </Header>
 
