@@ -13,12 +13,13 @@ import {
   ImageContainer,
   BackgroundCircle,
 } from "./Hero.styles";
+import ScheduleButton from "@/components/ui/Buttons/Scheduling";
 
 export default function Hero() {
   return (
     <HeroContainer>
 
-      <BackgroundCircle />
+      {/* <BackgroundCircle /> */}
 
       <HeroContent>
 
@@ -38,9 +39,7 @@ export default function Hero() {
 
         <Buttons>
 
-          <PrimaryButton>
-            Agendar Consulta
-          </PrimaryButton>
+          <ScheduleButton href="https://wa.me/5511999999999" target="_blank"/>
 
           <SecondaryButton>
             Conhecer Procedimentos

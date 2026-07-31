@@ -13,6 +13,7 @@ import {
   MenuButton,
   MobileMenu,
 } from "./Header.styles";
+import ScheduleButton from "@/components/ui/Buttons/Scheduling";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -57,7 +58,7 @@ export default function Header() {
         </Nav>
 
         <Actions>
-          <Button>Agendar Consulta</Button>
+          <ScheduleButton href="https://wa.me/5511999999999" target="_blank"/>
         </Actions>
 
         {/* MOBILE BUTTON */}
@@ -90,7 +91,7 @@ export default function Header() {
           Contato
         </NavItem>
 
-        <Button>Agendar Consulta</Button>
+        <ScheduleButton href="https://wa.me/5511999999999" target="_blank"/>
       </MobileMenu>
     </Container>
   );
