@@ -133,7 +133,7 @@ export const ThemeToggle = styled.button<{ $dark: boolean }>`
 
   border: 1px solid ${({ theme }) => theme.colors.border};
 
-  background: ${({ $dark, theme }) => ($dark ? "#1F2937" : "#E5E7EB")};
+  background: ${({ $dark, theme }) => ($dark ? "#1f293738" : "#e5e7eb18")};
 
   cursor: pointer;
 
@@ -162,7 +162,11 @@ export const ThemeToggle = styled.button<{ $dark: boolean }>`
 
     justify-content: center;
 
-    background: ${({ theme }) => theme.colors.surface};
+    background: color-mix(
+      in srgb,
+      ${({ theme }) => theme.colors.surface} 90%,
+      ${({ theme }) => theme.colors.text} 30%
+    );
 
     color: ${({ theme }) => theme.colors.textSecondary};
 
