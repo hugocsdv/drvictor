@@ -7,6 +7,7 @@ export const Container = styled.header`
   position: fixed;
 
   top: 0;
+
   left: 0;
 
   width: 100%;
@@ -35,8 +36,8 @@ export const Wrapper = styled.div<{
 
   padding: 18px 28px;
 
-  background: ${({ $scrolled }) =>
-    $scrolled ? "rgba(255,255,255,.85)" : "transparent"};
+  background: ${({ $scrolled, theme }) =>
+    $scrolled ? `${theme.colors.surface}dd` : "transparent"};
 
   backdrop-filter: ${({ $scrolled }) => ($scrolled ? "blur(22px)" : "none")};
 
@@ -112,8 +113,70 @@ export const NavItem = styled(Link)`
 export const Actions = styled.div`
   display: flex;
 
+  gap: ${({ theme }) => theme.spacing.sm};
+
+  justify-content: center;
+
+  align-items: center;
+
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     display: none;
+  }
+`;
+
+export const ThemeToggle = styled.button<{ $dark: boolean }>`
+  width: 46px;
+
+  height: 24px;
+
+  border-radius: ${({ theme }) => theme.radius.pill};
+
+  border: 1px solid ${({ theme }) => theme.colors.border};
+
+  background: ${({ $dark, theme }) => ($dark ? "#1F2937" : "#E5E7EB")};
+
+  cursor: pointer;
+
+  position: relative;
+
+  padding: 0;
+
+  transition: ${({ theme }) => theme.transition.default};
+
+  span {
+    position: absolute;
+
+    top: 1px;
+
+    left: ${({ $dark }) => ($dark ? "24px" : "3px")};
+
+    width: 21px;
+
+    height: 20px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: ${({ theme }) => theme.colors.surface};
+
+    color: ${({ theme }) => theme.colors.textSecondary};
+
+    font-size: 11px;
+
+    line-height: 1;
+
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+
+    transition: ${({ theme }) => theme.transition.default};
+  }
+
+  &:hover {
+    opacity: 0.8;
   }
 `;
 
@@ -152,7 +215,7 @@ export const MenuButton = styled.button`
 
   border: none;
 
-  font-size: 28px;
+  font-size: ${({ theme }) => theme.fontSize.xl};
 
   cursor: pointer;
 

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   Container,
   Wrapper,
@@ -12,10 +12,13 @@ import {
   Button,
   MenuButton,
   MobileMenu,
+  ThemeToggle,
 } from "./Header.styles";
 import ScheduleButton from "@/components/ui/Buttons/Scheduling";
+import { ThemeContext } from "@/context/ThemeContext";
 
 export default function Header() {
+  const { dark, toggleTheme } = useContext(ThemeContext);
   const [scrolled, setScrolled] = useState(false);
 
   const [open, setOpen] = useState(false);
@@ -58,7 +61,10 @@ export default function Header() {
         </Nav>
 
         <Actions>
-          <ScheduleButton href="https://wa.me/5511999999999" target="_blank"/>
+          <ThemeToggle $dark={dark} onClick={toggleTheme}>
+            <span></span>
+          </ThemeToggle>
+          <ScheduleButton href="https://wa.me/5511999999999" target="_blank" />
         </Actions>
 
         {/* MOBILE BUTTON */}
@@ -91,7 +97,7 @@ export default function Header() {
           Contato
         </NavItem>
 
-        <ScheduleButton href="https://wa.me/5511999999999" target="_blank"/>
+        <ScheduleButton href="https://wa.me/5511999999999" target="_blank" />
       </MobileMenu>
     </Container>
   );
