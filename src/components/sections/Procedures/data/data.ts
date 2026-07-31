@@ -133,4 +133,36 @@ export const procedures: Procedure[] = [
       "Bolsas abaixo dos olhos"
     ],
   },
+  {
+    id: 9,
+    category: "Mama",
+    title: "Blefaroplastia",
+    description:
+      "Tratamento das pálpebras para um olhar mais jovem e descansado.",
+    image: "/images/blefaroplastia.png",
+    benefits: [
+      "Rejuvenescimento do olhar",
+      "Redução de excesso de pele"
+    ],
+    indications: [
+      "Pálpebras caídas",
+      "Bolsas abaixo dos olhos"
+    ],
+  },
+  {
+    id: 10,
+    category: "Mama",
+    title: "Blefaroplastia",
+    description:
+      "Tratamento das pálpebras para um olhar mais jovem e descansado.",
+    image: "/images/blefaroplastia.png",
+    benefits: [
+      "Rejuvenescimento do olhar",
+      "Redução de excesso de pele"
+    ],
+    indications: [
+      "Pálpebras caídas",
+      "Bolsas abaixo dos olhos"
+    ],
+  },
 ];
