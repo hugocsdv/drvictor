@@ -18,7 +18,7 @@ import {
 } from "./Footer.styles";
 import ContactCard from "@/components/ui/ContactCard";
 import SocialButton from "@/components/ui/SocialButton";
-import { FooterProps } from "@/types/footer.props";
+import { FooterProps } from "@/shared/types/footer.props";
 
 const Footer = ({
   phone,

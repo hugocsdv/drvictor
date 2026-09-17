@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import LoginHeader from "@/components/login/LoginHeader/LoginHeader";
-import LoginForm from "@/components/login/LoginForm/LoginForm";
+import LoginHeader from "@/features/auth/components/login/LoginHeader/LoginHeader";
+import LoginForm from "@/features/auth/components/login/LoginForm";
 import {
   Container,
   CardContainer,

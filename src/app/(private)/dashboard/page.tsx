@@ -1,13 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import Sidebar, { TabOption } from "@/components/dashboard/Sidebar/Sidebar";
-import SendTerms from "@/components/dashboard/SendTerms/SendTerms";
-import RegisterClientSurgery from "@/components/dashboard/RegisterClientSurgery/RegisterClientSurgery";
-import RegisterSurgery from "@/components/dashboard/RegisterSurgery/RegisterSurgery";
-import UploadSurgeryTerm from "@/components/dashboard/UploadSurgeryTerm/UploadSurgeryTerm";
-import PatientList from "@/components/dashboard/PatientList/PatientList";
+import Sidebar, { TabOption } from "@/features/dashboard/Sidebar/Sidebar";
+import SendTerms from "@/features/dashboard/SendTerms/SendTerms";
+
+import UploadSurgeryTerm from "@/features/dashboard/UploadSurgeryTerm/UploadSurgeryTerm";
+import PatientList from "@/features/dashboard/PatientList";
 import { Container, Main } from "./styles";
+import RegisterSurgery from "@/features/dashboard/RegisterSurgery";
+import RegisterPatient from "@/features/dashboard/Patient/components";
+import PatientSurgery from "@/features/dashboard/PatientSurgery/components";
 
 export default function DashboardPage() {
   const [activeTab, setActiveTab] = useState<TabOption>("terms");
@@ -18,9 +20,10 @@ export default function DashboardPage() {
       <Main>
         {activeTab === "terms" && <SendTerms />}
         {activeTab === "patientList" && <PatientList />}
-        {activeTab === "register" && <RegisterClientSurgery />}
+        {activeTab === "registerPatient" && <RegisterPatient />}
         {activeTab === "surgeries" && <RegisterSurgery />}
         {activeTab === "surgeryTerms" && <UploadSurgeryTerm />}
+        {activeTab === "Surgery" && <PatientSurgery />}
       </Main>
     </Container>
   );

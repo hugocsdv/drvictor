@@ -150,6 +150,33 @@ export const AddSurgeryButton = styled.button`
   }
 `;
 
+export const Select = styled.select`
+  width: 100%;
+  height: 42px;
+  padding: 0 12px;
+
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+
+  background: #ffffff;
+  color: #111827;
+
+  font-size: 14px;
+
+  outline: none;
+
+  transition: border-color 0.2s ease;
+
+  &:focus {
+    border-color: #2563eb;
+  }
+
+  &:disabled {
+    background: #f3f4f6;
+    cursor: not-allowed;
+  }
+`;
+
 export const SubmitButton = styled.button`
   padding: 14px 28px;
   border: none;
