@@ -8,7 +8,7 @@ export const Card = styled.div`
   border-radius: 20px;
   padding: 32px;
   box-shadow: ${({ theme }) => theme.shadow.sm};
-  max-width: 800px;
+  max-width: 700px;
 `;
 
 export const Title = styled.h2`
@@ -30,16 +30,7 @@ export const Description = styled.p`
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 24px;
-`;
-
-export const SectionTitle = styled.h3`
-  font-family: ${({ theme }) => theme.fonts.body};
-  font-size: ${({ theme }) => theme.fontSize.md};
-  font-weight: 600;
-  color: ${({ theme }) => theme.colors.primary};
-  border-bottom: 1px solid ${({ theme }) => theme.colors.border};
-  padding-bottom: 8px;
+  gap: 20px;
 `;
 
 export const Grid = styled.div`
@@ -52,10 +43,11 @@ export const Grid = styled.div`
   }
 `;
 
-export const FormGroup = styled.div`
+export const FormGroup = styled.div<{ $fullWidth?: boolean }>`
   display: flex;
   flex-direction: column;
   gap: 8px;
+  grid-column: ${({ $fullWidth }) => ($fullWidth ? "1 / -1" : "span 1")};
 `;
 
 export const Label = styled.label`
@@ -81,72 +73,21 @@ export const Input = styled.input`
   }
 `;
 
-export const SurgeriesContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-`;
-
-export const SurgeryCard = styled.div`
-  background: rgba(0, 0, 0, 0.015);
+export const TextArea = styled.textarea`
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 12px;
   border: 1px solid ${({ theme }) => theme.colors.border};
-  border-radius: 16px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-`;
-
-export const SurgeryHeader = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-export const SurgeryTitle = styled.span`
-  font-family: ${({ theme }) => theme.fonts.body};
-  font-size: ${({ theme }) => theme.fontSize.sm};
-  font-weight: 600;
+  background: transparent;
   color: ${({ theme }) => theme.colors.text};
-  opacity: 0.8;
-`;
-
-export const RemoveButton = styled.button`
-  background: transparent;
-  border: none;
-  color: #e53e3e;
   font-family: ${({ theme }) => theme.fonts.body};
-  font-size: ${({ theme }) => theme.fontSize.sm};
-  font-weight: 600;
-  cursor: pointer;
-  padding: 4px 8px;
-  border-radius: 6px;
-  transition: ${({ theme }) => theme.transition.default};
+  font-size: ${({ theme }) => theme.fontSize.md};
+  outline: none;
+  resize: vertical;
+  min-height: 100px;
 
-  &:hover {
-    background: rgba(229, 62, 62, 0.08);
-  }
-`;
-
-export const AddSurgeryButton = styled.button`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 12px 20px;
-  border-radius: ${({ theme }) => theme.radius.pill};
-  border: 1px dashed ${({ theme }) => theme.colors.primary};
-  background: transparent;
-  color: ${({ theme }) => theme.colors.primary};
-  font-family: ${({ theme }) => theme.fonts.body};
-  font-size: ${({ theme }) => theme.fontSize.sm};
-  font-weight: 600;
-  cursor: pointer;
-  transition: ${({ theme }) => theme.transition.default};
-  align-self: flex-start;
-
-  &:hover {
-    background: rgba(0, 0, 0, 0.03);
+  &:focus {
+    border-color: ${({ theme }) => theme.colors.primary};
   }
 `;
 

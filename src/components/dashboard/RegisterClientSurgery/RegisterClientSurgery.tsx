@@ -11,38 +11,72 @@ import {
   FormGroup,
   Label,
   Input,
-  TextArea,
+  SurgeriesContainer,
+  SurgeryCard,
+  SurgeryHeader,
+  SurgeryTitle,
+  RemoveButton,
+  AddSurgeryButton,
   SubmitButton,
 } from "./RegisterClientSurgery.styles";
 
+interface SurgeryItem {
+  id: number;
+  surgeryType: string;
+  surgeryDate: string;
+}
+
 export default function RegisterClientSurgery() {
-  const [formData, setFormData] = useState({
+  const [patientData, setPatientData] = useState({
     name: "",
     cpf: "",
-    phone: "",
     email: "",
-    surgeryType: "",
-    surgeryDate: "",
-    doctor: "",
-    notes: "",
   });
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  const [surgeries, setSurgeries] = useState<SurgeryItem[]>([
+    { id: Date.now(), surgeryType: "", surgeryDate: "" },
+  ]);
+
+  const handlePatientChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPatientData({ ...patientData, [e.target.name]: e.target.value });
+  };
+
+  const handleSurgeryChange = (
+    id: number,
+    field: keyof Omit<SurgeryItem, "id">,
+    value: string
   ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setSurgeries((prev) =>
+      prev.map((item) => (item.id === id ? { ...item, [field]: value } : item))
+    );
+  };
+
+  const handleAddSurgery = () => {
+    setSurgeries((prev) => [
+      ...prev,
+      { id: Date.now(), surgeryType: "", surgeryDate: "" },
+    ]);
+  };
+
+  const handleRemoveSurgery = (id: number) => {
+    if (surgeries.length === 1) return;
+    setSurgeries((prev) => prev.filter((item) => item.id !== id));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Lógica para cadastro unificado
+    const payload = {
+      ...patientData,
+      surgeries,
+    };
+    console.log("Cadastro unificado enviado:", payload);
   };
 
   return (
     <Card>
       <Title>Cadastrar Cliente e Cirurgia</Title>
       <Description>
-        Registre os dados do paciente e o procedimento cirúrgico correspondente.
+        Registre os dados do paciente e adicione um ou mais procedimentos cirúrgicos.
       </Description>
 
       <Form onSubmit={handleSubmit}>
@@ -53,8 +87,8 @@ export default function RegisterClientSurgery() {
             <Input
               id="name"
               name="name"
-              value={formData.name}
-              onChange={handleChange}
+              value={patientData.name}
+              onChange={handlePatientChange}
               required
             />
           </FormGroup>
@@ -65,20 +99,8 @@ export default function RegisterClientSurgery() {
               id="cpf"
               name="cpf"
               placeholder="000.000.000-00"
-              value={formData.cpf}
-              onChange={handleChange}
-              required
-            />
-          </FormGroup>
-
-          <FormGroup>
-            <Label htmlFor="phone">Telefone / WhatsApp</Label>
-            <Input
-              id="phone"
-              name="phone"
-              placeholder="(00) 00000-0000"
-              value={formData.phone}
-              onChange={handleChange}
+              value={patientData.cpf}
+              onChange={handlePatientChange}
               required
             />
           </FormGroup>
@@ -89,59 +111,75 @@ export default function RegisterClientSurgery() {
               id="email"
               name="email"
               type="email"
-              value={formData.email}
-              onChange={handleChange}
+              value={patientData.email}
+              onChange={handlePatientChange}
               required
             />
           </FormGroup>
         </Grid>
 
-        <SectionTitle>Dados da Cirurgia</SectionTitle>
-        <Grid>
-          <FormGroup>
-            <Label htmlFor="surgeryType">Procedimento Cirúrgico</Label>
-            <Input
-              id="surgeryType"
-              name="surgeryType"
-              value={formData.surgeryType}
-              onChange={handleChange}
-              required
-            />
-          </FormGroup>
+        <SectionTitle>Procedimentos Cirúrgicos</SectionTitle>
 
-          <FormGroup>
-            <Label htmlFor="surgeryDate">Data Prevista</Label>
-            <Input
-              id="surgeryDate"
-              name="surgeryDate"
-              type="date"
-              value={formData.surgeryDate}
-              onChange={handleChange}
-              required
-            />
-          </FormGroup>
+        <SurgeriesContainer>
+          {surgeries.map((surgery, index) => (
+            <SurgeryCard key={surgery.id}>
+              <SurgeryHeader>
+                <SurgeryTitle>Cirurgia #{index + 1}</SurgeryTitle>
+                {surgeries.length > 1 && (
+                  <RemoveButton
+                    type="button"
+                    onClick={() => handleRemoveSurgery(surgery.id)}
+                  >
+                    Remover
+                  </RemoveButton>
+                )}
+              </SurgeryHeader>
 
-          <FormGroup $fullWidth>
-            <Label htmlFor="doctor">Médico Responsável</Label>
-            <Input
-              id="doctor"
-              name="doctor"
-              value={formData.doctor}
-              onChange={handleChange}
-              required
-            />
-          </FormGroup>
+              <Grid>
+                <FormGroup>
+                  <Label htmlFor={`surgeryType-${surgery.id}`}>
+                    Procedimento Cirúrgico
+                  </Label>
+                  <Input
+                    id={`surgeryType-${surgery.id}`}
+                    value={surgery.surgeryType}
+                    onChange={(e) =>
+                      handleSurgeryChange(
+                        surgery.id,
+                        "surgeryType",
+                        e.target.value
+                      )
+                    }
+                    required
+                  />
+                </FormGroup>
 
-          <FormGroup $fullWidth>
-            <Label htmlFor="notes">Observações Médicas</Label>
-            <TextArea
-              id="notes"
-              name="notes"
-              value={formData.notes}
-              onChange={handleChange}
-            />
-          </FormGroup>
-        </Grid>
+                <FormGroup>
+                  <Label htmlFor={`surgeryDate-${surgery.id}`}>
+                    Data Prevista
+                  </Label>
+                  <Input
+                    id={`surgeryDate-${surgery.id}`}
+                    type="date"
+                    value={surgery.surgeryDate}
+                    onChange={(e) =>
+                      handleSurgeryChange(
+                        surgery.id,
+                        "surgeryDate",
+                        e.target.value
+                      )
+                    }
+                    required
+                  />
+                </FormGroup>
+              </Grid>
+            </SurgeryCard>
+          ))}
+        </SurgeriesContainer>
+
+        <AddSurgeryButton type="button" onClick={handleAddSurgery}>
+          + Adicionar outra cirurgia
+        </AddSurgeryButton>
 
         <SubmitButton type="submit">Cadastrar Registro</SubmitButton>
       </Form>

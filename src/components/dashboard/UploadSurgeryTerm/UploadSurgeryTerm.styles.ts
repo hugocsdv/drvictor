@@ -8,7 +8,7 @@ export const Card = styled.div`
   border-radius: 20px;
   padding: 32px;
   box-shadow: ${({ theme }) => theme.shadow.sm};
-  max-width: 800px;
+  max-width: 750px;
 `;
 
 export const Title = styled.h2`
@@ -30,16 +30,7 @@ export const Description = styled.p`
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 24px;
-`;
-
-export const SectionTitle = styled.h3`
-  font-family: ${({ theme }) => theme.fonts.body};
-  font-size: ${({ theme }) => theme.fontSize.md};
-  font-weight: 600;
-  color: ${({ theme }) => theme.colors.primary};
-  border-bottom: 1px solid ${({ theme }) => theme.colors.border};
-  padding-bottom: 8px;
+  gap: 20px;
 `;
 
 export const Grid = styled.div`
@@ -52,10 +43,11 @@ export const Grid = styled.div`
   }
 `;
 
-export const FormGroup = styled.div`
+export const FormGroup = styled.div<{ $fullWidth?: boolean }>`
   display: flex;
   flex-direction: column;
   gap: 8px;
+  grid-column: ${({ $fullWidth }) => ($fullWidth ? "1 / -1" : "span 1")};
 `;
 
 export const Label = styled.label`
@@ -81,72 +73,88 @@ export const Input = styled.input`
   }
 `;
 
-export const SurgeriesContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-`;
-
-export const SurgeryCard = styled.div`
-  background: rgba(0, 0, 0, 0.015);
+export const Select = styled.select`
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 12px;
   border: 1px solid ${({ theme }) => theme.colors.border};
-  border-radius: 16px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-`;
-
-export const SurgeryHeader = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-export const SurgeryTitle = styled.span`
-  font-family: ${({ theme }) => theme.fonts.body};
-  font-size: ${({ theme }) => theme.fontSize.sm};
-  font-weight: 600;
-  color: ${({ theme }) => theme.colors.text};
-  opacity: 0.8;
-`;
-
-export const RemoveButton = styled.button`
   background: transparent;
-  border: none;
-  color: #e53e3e;
+  color: ${({ theme }) => theme.colors.text};
   font-family: ${({ theme }) => theme.fonts.body};
-  font-size: ${({ theme }) => theme.fontSize.sm};
-  font-weight: 600;
-  cursor: pointer;
-  padding: 4px 8px;
-  border-radius: 6px;
-  transition: ${({ theme }) => theme.transition.default};
+  font-size: ${({ theme }) => theme.fontSize.md};
+  outline: none;
 
-  &:hover {
-    background: rgba(229, 62, 62, 0.08);
+  &:focus {
+    border-color: ${({ theme }) => theme.colors.primary};
   }
 `;
 
-export const AddSurgeryButton = styled.button`
-  display: inline-flex;
+export const Dropzone = styled.label`
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 12px 20px;
-  border-radius: ${({ theme }) => theme.radius.pill};
-  border: 1px dashed ${({ theme }) => theme.colors.primary};
-  background: transparent;
-  color: ${({ theme }) => theme.colors.primary};
-  font-family: ${({ theme }) => theme.fonts.body};
-  font-size: ${({ theme }) => theme.fontSize.sm};
-  font-weight: 600;
+  gap: 12px;
+  padding: 32px;
+  border: 2px dashed ${({ theme }) => theme.colors.border};
+  border-radius: 16px;
   cursor: pointer;
+  background: rgba(0, 0, 0, 0.01);
   transition: ${({ theme }) => theme.transition.default};
-  align-self: flex-start;
 
   &:hover {
-    background: rgba(0, 0, 0, 0.03);
+    border-color: ${({ theme }) => theme.colors.primary};
+    background: rgba(0, 0, 0, 0.02);
+  }
+
+  input {
+    display: none;
+  }
+
+  svg {
+    width: 40px;
+    height: 40px;
+    fill: ${({ theme }) => theme.colors.primary};
+  }
+`;
+
+export const DropzoneText = styled.span`
+  font-family: ${({ theme }) => theme.fonts.body};
+  font-size: ${({ theme }) => theme.fontSize.sm};
+  color: ${({ theme }) => theme.colors.text};
+  font-weight: 500;
+  text-align: center;
+
+  strong {
+    color: ${({ theme }) => theme.colors.primary};
+  }
+`;
+
+export const FileSelected = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 12px;
+  font-family: ${({ theme }) => theme.fonts.body};
+  font-size: ${({ theme }) => theme.fontSize.sm};
+  color: ${({ theme }) => theme.colors.text};
+`;
+
+export const CheckboxLabel = styled.label`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-family: ${({ theme }) => theme.fonts.body};
+  font-size: ${({ theme }) => theme.fontSize.sm};
+  color: ${({ theme }) => theme.colors.text};
+
+  input {
+    width: 18px;
+    height: 18px;
+    accent-color: ${({ theme }) => theme.colors.primary};
   }
 `;
 

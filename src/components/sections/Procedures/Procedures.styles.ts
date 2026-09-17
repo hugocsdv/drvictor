@@ -33,15 +33,11 @@ export const Subtitle = styled.span`
 `;
 
 export const Title = styled.h2`
-  font-family: ${({ theme }) => theme.fonts.heading};
-
-  font-size: ${({ theme }) => theme.fontSize.h2};
-
+  font-size: ${({ theme }) => theme.fontSize.h3};
   color: ${({ theme }) => theme.colors.text};
-
+  font-family: ${({ theme }) => theme.fonts.heading};
   font-weight: 500;
 
-  margin-bottom: 15px;
 `;
 
 export const DescriptionHeader = styled.p`

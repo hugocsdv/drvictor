@@ -14,7 +14,7 @@ export const Card = styled.a`
     transform: translateY(-2px);
   }
 
-  &:hover span:last-child {
+  span:last-child {
     color: ${({ theme }) => theme.colors.primary};
   }
 `;

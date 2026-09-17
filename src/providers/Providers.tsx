@@ -1,12 +1,40 @@
 "use client";
 
 import { ThemeProvider } from "styled-components";
-import theme from "@/styles/theme";
+import { useState } from "react";
 
-interface ProvidersProps {
-  children: React.ReactNode;
-}
+import darkTheme from "@/styles/darkTheme";
+import lightTheme from "@/styles/lightTheme";
+import { ThemeContext } from "@/context/ThemeContext";
 
-export default function Providers({ children }: ProvidersProps) {
-  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+
+
+export default function Providers({
+  children
+}:{
+  children:React.ReactNode
+}){
+
+  const [dark,setDark] = useState(false);
+
+
+  function toggleTheme(){
+    setDark((prev)=>!prev);
+  }
+
+
+  return(
+    <ThemeContext.Provider
+      value={{
+        dark,
+        toggleTheme,
+      }}
+    >
+
+      <ThemeProvider theme={dark ? darkTheme : lightTheme}>
+        {children}
+      </ThemeProvider>
+
+    </ThemeContext.Provider>
+  );
 }

@@ -24,6 +24,7 @@ import {
 } from "./ProcedureDetails.styles";
 
 import { Procedure } from "../types/Procedure";
+import ScheduleButton from "@/components/ui/Buttons/Scheduling";
 
 interface Props {
   procedure: Procedure;
@@ -75,8 +76,6 @@ export default function ProcedureDetails({ procedure }: Props) {
         </InfoItem>
       </InfoGrid>
 
-     
-
       <Body>
         <div>
           <SectionTitle>Sobre o procedimento</SectionTitle>
@@ -100,17 +99,11 @@ export default function ProcedureDetails({ procedure }: Props) {
             você.
           </Text>
 
-          <Button>Agendar consulta</Button>
-
-          <Button
-            style={{
-              background: "transparent",
-              color: "#8b5a32",
-              border: "1px solid #8b5a32",
-            }}
-          >
-            WhatsApp
-          </Button>
+          <ScheduleButton
+            href="https://wa.me/5511999999999"
+            target="_blank"
+            fullWidth
+          />
         </Aside>
       </Body>
     </Container>

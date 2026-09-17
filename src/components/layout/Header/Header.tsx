@@ -1,8 +1,7 @@
-
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   Container,
   Wrapper,
@@ -14,9 +13,13 @@ import {
   MenuButton,
   MobileMenu,
   LoginButton,
+  ThemeToggle,
 } from "./Header.styles";
+import ScheduleButton from "@/components/ui/Buttons/Scheduling";
+import { ThemeContext } from "@/context/ThemeContext";
 
 export default function Header() {
+  const { dark, toggleTheme } = useContext(ThemeContext);
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -40,12 +43,7 @@ export default function Header() {
     <Container>
       <Wrapper $scrolled={scrolled}>
         <Logo>
-          <Image
-            src="/images/logo.png"
-            alt="Logo"
-            width={45}
-            height={45}
-          />
+          <Image src="/images/logo.png" alt="Logo" width={45} height={45} />
         </Logo>
 
         {/* DESKTOP */}
@@ -63,13 +61,11 @@ export default function Header() {
         </Nav>
 
         <Actions>
-          <LoginButton href="/login">
-            Entrar
-          </LoginButton>
-
-          <Button>
-            Agendar Consulta
-          </Button>
+          <ThemeToggle $dark={dark} onClick={toggleTheme}>
+            <span></span>
+          </ThemeToggle>
+          <ScheduleButton href="https://wa.me/5511999999999" target="_blank" />
+        <LoginButton href="/login">Entrar</LoginButton>
         </Actions>
 
         {/* MOBILE BUTTON */}
@@ -109,9 +105,8 @@ export default function Header() {
           Entrar
         </NavItem>
 
-        <Button onClick={closeMenu}>
-          Agendar Consulta
-        </Button>
+        <Button onClick={closeMenu}>Agendar Consulta</Button>
+        <ScheduleButton href="https://wa.me/5511999999999" target="_blank" />
       </MobileMenu>
     </Container>
   );

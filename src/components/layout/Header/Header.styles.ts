@@ -7,6 +7,7 @@ export const Container = styled.header`
   position: fixed;
 
   top: 0;
+
   left: 0;
 
   width: 100%;
@@ -33,8 +34,8 @@ export const Wrapper = styled.div<{ $scrolled: boolean }>`
 
   padding: 18px 28px;
 
-  background: ${({ $scrolled }) =>
-    $scrolled ? "rgba(255,255,255,.85)" : "transparent"};
+  background: ${({ $scrolled, theme }) =>
+    $scrolled ? `${theme.colors.surface}dd` : "transparent"};
 
   backdrop-filter: ${({ $scrolled }) => ($scrolled ? "blur(22px)" : "none")};
 
@@ -109,8 +110,9 @@ export const NavItem = styled(Link)`
 
 export const Actions = styled.div`
   display: flex;
+  gap: ${({ theme }) => theme.spacing.sm};
+  justify-content: center;
   align-items: center;
-  gap: ${({ theme }) => theme.spacing.lg};
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     display: none;
   }
@@ -120,6 +122,103 @@ export const LoginButton = styled(Link)`
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  padding: 13px 24px; /* Ajuste sutil no padding para melhor proporção */
+  
+  border-radius: ${({ theme }) => theme.radius.pill};
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  background: transparent;
+  
+  color: ${({ theme }) => theme.colors.text};
+  font-family: ${({ theme }) => theme.fonts.body};
+  font-size: ${({ theme }) => theme.fontSize.md};
+  font-weight: 600;
+  letter-spacing: 0.3px; /* Espaçamento de fonte elegante */
+  text-decoration: none;
+  
+  /* Transição suave para todas as propriedades animadas */
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+  &:hover {
+    border-color: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.primary};
+    
+    /* Levanta levemente e adiciona uma sombra suave para dar profundidade */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+  }
+
+  &:active {
+    /* Efeito tátil de clique (afunda o botão de volta) */
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  }
+`;
+
+export const ThemeToggle = styled.button<{ $dark: boolean }>`
+  width: 46px;
+
+  height: 24px;
+
+  border-radius: ${({ theme }) => theme.radius.pill};
+
+  border: 1px solid white;
+
+  background: ${({ $dark, theme }) => ($dark ? "#1f293738" : "#e5e7eb18")};
+
+  cursor: pointer;
+
+  position: relative;
+
+  padding: 0;
+
+  transition: ${({ theme }) => theme.transition.default};
+
+  span {
+    position: absolute;
+
+    top: 1px;
+
+    left: ${({ $dark }) => ($dark ? "24px" : "3px")};
+
+    width: 21px;
+
+    height: 20px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: color-mix(
+      in srgb,
+      ${({ theme }) => theme.colors.surface} 90%,
+      ${({ theme }) => theme.colors.text} 30%
+    );
+
+    color: ${({ theme }) => theme.colors.textSecondary};
+
+    font-size: 11px;
+
+    line-height: 1;
+
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+
+    transition: ${({ theme }) => theme.transition.default};
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+`;
+
+export const Button = styled.button`
+  border: none;
+
+  cursor: pointer;
+
   padding: 15px 28px;
 
   border-radius: ${({ theme }) => theme.radius.pill};
@@ -153,28 +252,15 @@ export const LoginButton = styled(Link)`
   }
 `;
 
-export const Button = styled.button`
-  border: none;
-  cursor: pointer;
-  padding: 15px 28px;
-  border-radius: ${({ theme }) => theme.radius.pill};
-  background: ${({ theme }) => theme.colors.primary};
-  color: ${({ theme }) => theme.colors.surface};
-  font-family: ${({ theme }) => theme.fonts.body};
-  font-size: ${({ theme }) => theme.fontSize.md};
-  font-weight: 600;
-  transition: ${({ theme }) => theme.transition.default};
-  &:hover {
-    transform: translateY(-3px);
-    box-shadow: ${({ theme }) => theme.shadow.md};
-  }
-`;
+
 
 export const MenuButton = styled.button`
   display: none;
   background: none;
   border: none;
-  font-size: 28px;
+
+  font-size: ${({ theme }) => theme.fontSize.xl};
+
   cursor: pointer;
   color: ${({ theme }) => theme.colors.text};
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {

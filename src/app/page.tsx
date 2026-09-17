@@ -1,5 +1,7 @@
 import Header from "@/components/layout/Header";
 import Benefits from "@/components/sections/Benefits";
+import DoctorResume from "@/components/sections/DoctorResume";
+import Gallery from "@/components/sections/Gallery";
 import Hero from "@/components/sections/Hero";
 import Locations from "@/components/sections/Locations/Locations";
 import Procedures from "@/components/sections/Procedures";
@@ -27,7 +29,9 @@ export default function Home() {
       <Header />
       <Hero />
       <Benefits />
+      <DoctorResume />
       <Procedures />
+      <Gallery />
       <Locations locations={locations} />
     </>
   );
