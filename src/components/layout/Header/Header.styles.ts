@@ -22,9 +22,7 @@ export const Container = styled.header`
   }
 `;
 
-export const Wrapper = styled.div<{
-  $scrolled: boolean;
-}>`
+export const Wrapper = styled.div<{ $scrolled: boolean }>`
   width: 100%;
 
   display: flex;
@@ -111,53 +109,74 @@ export const NavItem = styled(Link)`
 
 export const Actions = styled.div`
   display: flex;
-
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing.lg};
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     display: none;
   }
 `;
 
-export const Button = styled.button`
-  border: none;
-
-  cursor: pointer;
-
+export const LoginButton = styled(Link)`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 15px 28px;
 
   border-radius: ${({ theme }) => theme.radius.pill};
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  background: transparent;
 
-  background: ${({ theme }) => theme.colors.primary};
-
-  color: ${({ theme }) => theme.colors.surface};
-
+  color: ${({ theme }) => theme.colors.text};
   font-family: ${({ theme }) => theme.fonts.body};
-
   font-size: ${({ theme }) => theme.fontSize.md};
-
   font-weight: 600;
+  letter-spacing: 0.3px; /* Espaçamento de fonte elegante */
+  text-decoration: none;
 
-  transition: ${({ theme }) => theme.transition.default};
+  /* Transição suave para todas as propriedades animadas */
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 
   &:hover {
-    transform: translateY(-3px);
+    border-color: ${({ theme }) => theme.colors.background};
+    background-color: ${({ theme }) => theme.colors.border};;
+    color: ${({ theme }) => theme.colors.primary};
 
+    /* Levanta levemente e adiciona uma sombra suave para dar profundidade */
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+  }
+
+  &:active {
+    /* Efeito tátil de clique (afunda o botão de volta) */
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  }
+`;
+
+export const Button = styled.button`
+  border: none;
+  cursor: pointer;
+  padding: 15px 28px;
+  border-radius: ${({ theme }) => theme.radius.pill};
+  background: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.surface};
+  font-family: ${({ theme }) => theme.fonts.body};
+  font-size: ${({ theme }) => theme.fontSize.md};
+  font-weight: 600;
+  transition: ${({ theme }) => theme.transition.default};
+  &:hover {
+    transform: translateY(-3px);
     box-shadow: ${({ theme }) => theme.shadow.md};
   }
 `;
 
 export const MenuButton = styled.button`
   display: none;
-
   background: none;
-
   border: none;
-
   font-size: 28px;
-
   cursor: pointer;
-
   color: ${({ theme }) => theme.colors.text};
-
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     display: block;
   }
@@ -170,11 +189,8 @@ export const MobileMenu = styled.div<{
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     position: absolute;
-
     top: 100%;
-
     left: 0;
-
     width: 100%;
 
     padding: ${({ theme }) => theme.spacing.xl};

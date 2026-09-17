@@ -3,7 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 import Providers from "@/providers/Providers";
-import Header from "@/components/layout/Header";
 import StyledComponentsRegistry from "@/lib/registry";
 import Footer from "@/components/layout/Footer";
 import { FooterProps } from "@/types/footer.props";
@@ -41,7 +40,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <StyledComponentsRegistry>
           <Providers>
-            <Header />
+            
             {children}
             <Footer {...footerMock} />
           </Providers>

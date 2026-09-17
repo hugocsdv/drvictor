@@ -1,3 +1,4 @@
+import Header from "@/components/layout/Header";
 import Benefits from "@/components/sections/Benefits";
 import Hero from "@/components/sections/Hero";
 import Locations from "@/components/sections/Locations/Locations";
@@ -23,6 +24,7 @@ const locations = [
 export default function Home() {
   return (
     <>
+      <Header />
       <Hero />
       <Benefits />
       <Procedures />

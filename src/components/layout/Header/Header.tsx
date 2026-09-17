@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -12,11 +13,11 @@ import {
   Button,
   MenuButton,
   MobileMenu,
+  LoginButton,
 } from "./Header.styles";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
-
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -39,7 +40,12 @@ export default function Header() {
     <Container>
       <Wrapper $scrolled={scrolled}>
         <Logo>
-          <Image src="/images/logo.png" alt="Logo" width={45} height={45} />
+          <Image
+            src="/images/logo.png"
+            alt="Logo"
+            width={45}
+            height={45}
+          />
         </Logo>
 
         {/* DESKTOP */}
@@ -57,12 +63,21 @@ export default function Header() {
         </Nav>
 
         <Actions>
-          <Button>Agendar Consulta</Button>
+          <LoginButton href="/login">
+            Entrar
+          </LoginButton>
+
+          <Button>
+            Agendar Consulta
+          </Button>
         </Actions>
 
         {/* MOBILE BUTTON */}
 
-        <MenuButton onClick={() => setOpen(!open)} aria-label="Abrir menu">
+        <MenuButton
+          onClick={() => setOpen(!open)}
+          aria-label={open ? "Fechar menu" : "Abrir menu"}
+        >
           {open ? "✕" : "☰"}
         </MenuButton>
       </Wrapper>
@@ -90,7 +105,13 @@ export default function Header() {
           Contato
         </NavItem>
 
-        <Button>Agendar Consulta</Button>
+        <NavItem href="/login" onClick={closeMenu}>
+          Entrar
+        </NavItem>
+
+        <Button onClick={closeMenu}>
+          Agendar Consulta
+        </Button>
       </MobileMenu>
     </Container>
   );

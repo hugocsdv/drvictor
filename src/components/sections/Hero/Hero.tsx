@@ -18,7 +18,7 @@ export default function Hero() {
   return (
     <HeroContainer>
 
-      <BackgroundCircle />
+      {/* <BackgroundCircle /> */}
 
       <HeroContent>
 
