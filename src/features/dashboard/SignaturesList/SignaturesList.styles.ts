@@ -9,7 +9,7 @@ export const Container = styled.div`
   padding: 32px;
   box-shadow: ${({ theme }) => theme.shadow.sm};
   width: 100%;
-  max-width: 1100px;
+  overflow-x: scroll;
 `;
 
 export const Title = styled.h2`
@@ -87,7 +87,8 @@ export const Th = styled.th`
   text-transform: uppercase;
   color: ${({ theme }) => theme.colors.text};
   opacity: 0.6;
-  padding: 12px 16px;
+  padding: 18px 24px;
+  min-width: 180px;
   border-bottom: 2px solid ${({ theme }) => theme.colors.border};
 `;
 
@@ -98,6 +99,8 @@ export const Td = styled.td`
   padding: 16px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.border};
   vertical-align: middle;
+
+  min-width: 180px;
 `;
 
 export const SurgeryList = styled.div`

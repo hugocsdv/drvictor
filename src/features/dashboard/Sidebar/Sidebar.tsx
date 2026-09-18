@@ -15,8 +15,10 @@ export type TabOption =
   | "registerPatient"
   | "surgeries"
   | "surgeryTerms"
-  | "Patient"
-  | "Surgery"
+  | "patient"
+  | "surgery"
+  | "signaturesList"
+  | "budget"
   | "patientList";
 
 interface SidebarProps {
@@ -35,13 +37,23 @@ export default function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
 
         <Nav>
           <NavItem
-            $active={activeTab === "patientList"}
-            onClick={() => setActiveTab("patientList")}
+            $active={activeTab === "signaturesList"}
+            onClick={() => setActiveTab("signaturesList")}
           >
             <svg viewBox="0 0 24 24">
               <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
             </svg>
-            Status de Assinaturas
+            Ver Assinaturas
+          </NavItem>
+
+          <NavItem
+            $active={activeTab === "patientList"}
+            onClick={() => setActiveTab("patientList")}
+          >
+            <svg viewBox="0 0 24 24">
+              <path d="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9 0c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4zm9 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2c0-2.66-5.33-4-8-4z" />
+            </svg>
+            Ver Pacientes
           </NavItem>
 
           <NavItem
@@ -65,8 +77,8 @@ export default function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
           </NavItem>
 
           <NavItem
-            $active={activeTab === "Surgery"}
-            onClick={() => setActiveTab("Surgery")}
+            $active={activeTab === "surgery"}
+            onClick={() => setActiveTab("surgery")}
           >
             <svg viewBox="0 0 24 24">
               <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" />
@@ -82,7 +94,7 @@ export default function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
             </svg>
             Vincular Termo PDF
           </NavItem>
-          
+
           <NavItem
             $active={activeTab === "terms"}
             onClick={() => setActiveTab("terms")}
@@ -91,6 +103,16 @@ export default function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
               <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
             </svg>
             Enviar Termos
+          </NavItem>
+
+          <NavItem
+            $active={activeTab === "budget"}
+            onClick={() => setActiveTab("budget")}
+          >
+            <svg viewBox="0 0 24 24">
+              <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
+            </svg>
+            Orçamento
           </NavItem>
         </Nav>
       </TopSection>

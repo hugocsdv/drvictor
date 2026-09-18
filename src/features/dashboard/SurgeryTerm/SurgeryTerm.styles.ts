@@ -124,7 +124,7 @@ export const DropzoneText = styled.span`
   color: ${({ theme }) => theme.colors.text};
   font-weight: 500;
   text-align: center;
-
+  
   strong {
     color: ${({ theme }) => theme.colors.primary};
   }

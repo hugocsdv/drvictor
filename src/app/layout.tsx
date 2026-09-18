@@ -7,6 +7,7 @@ import StyledComponentsRegistry from "@/lib/registry";
 import Footer from "@/components/layout/Footer";
 import { FooterProps } from "@/shared/types/footer.props";
 import { AuthProvider } from "@/features/auth/context/AuthContext";
+import { SignaturesProvider } from "@/providers/SignaturesProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -42,7 +43,9 @@ export default function RootLayout({
         <StyledComponentsRegistry>
           <Providers>
             <AuthProvider>
+            <SignaturesProvider>
             {children}
+            </SignaturesProvider>
             <Footer {...footerMock} />
             </AuthProvider>
           </Providers>

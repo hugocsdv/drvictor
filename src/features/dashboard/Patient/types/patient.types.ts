@@ -12,7 +12,11 @@ export interface CreatePatientRequest {
 
 export interface Patient {
   id: string;
+  createdAt: string;
   name: string;
+  updatedAt: string;
+  cpf: string;
+  email: string;
 
   surgeryId: string;
   surgeryDate: string;
