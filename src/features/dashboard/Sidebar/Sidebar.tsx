@@ -119,14 +119,14 @@ const menuGroups: MenuGroup[] = [
     title: "Financeiro",
     items: [
       {
-        label: "Criar Orçamento",
-        tab: "budget",
-        icon: FilePlus,
-      },
-      {
         label: "Ver Orçamentos",
         tab: "budgetList",
         icon: Files,
+      },
+      {
+        label: "Criar Orçamento",
+        tab: "budget",
+        icon: FilePlus,
       },
     ],
   },
