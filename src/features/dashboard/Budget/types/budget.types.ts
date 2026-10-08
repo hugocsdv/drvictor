@@ -1,6 +1,8 @@
 export interface BudgetPrintData {
   patientName: string;
   surgeryDate: string;
+  observations: string;
+  printObservations: boolean;
 
   surgery: {
     name: string;

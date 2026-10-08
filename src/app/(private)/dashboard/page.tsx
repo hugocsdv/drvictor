@@ -13,6 +13,7 @@ import SignaturesList from "@/features/dashboard/SignaturesList";
 import PatientList from "@/features/dashboard/Patient/components/List";
 import SurgeryTerm from "@/features/dashboard/SurgeryTerm/SurgeryTerm";
 import Budget from "@/features/dashboard/Budget/components";
+import BudgetList from "@/features/dashboard/Budget/components/List/BudgetList";
 
 export default function DashboardPage() {
   const [activeTab, setActiveTab] = useState<TabOption>("terms");
@@ -29,6 +30,7 @@ export default function DashboardPage() {
         {activeTab === "surgery" && <PatientSurgery />}
         {activeTab === "patientList" && <PatientList />}
         {activeTab === "budget" && <Budget />}
+        {activeTab === "budgetList" && <BudgetList />}
       </Main>
     </Container>
   );

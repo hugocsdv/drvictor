@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     marginTop: 3,
     alignItems: "center",
+    fontFamily: "Tinos",
   },
 
   specialty: {
@@ -181,8 +182,9 @@ const styles = StyleSheet.create({
   },
 
   observation: {
-    fontSize: 8,
+    fontSize: 12,
     marginTop: 6,
+    fontWeight: 700,
     fontFamily: "Times-Italic",
   },
 
@@ -226,7 +228,7 @@ const styles = StyleSheet.create({
   contactRow: {
     flexDirection: "row",
     alignItems: "center",
-  
+
   },
 
   contactIcon: {
@@ -234,6 +236,25 @@ const styles = StyleSheet.create({
     height: 11,
     marginRight: 2,
     objectFit: "contain",
+  },
+  observationsSection: {
+    marginTop: 24,
+    marginBottom: 16,
+  },
+
+  observationsTitle: {
+    fontFamily: "Times-Bold",
+    fontSize: 14,
+    marginBottom: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: "#CCCCCC",
+    paddingBottom: 8,
+  },
+
+  observationsText: {
+    fontFamily: "Times-Roman",
+    fontSize: 11,
+    lineHeight: 1.6,
   },
 });
 
@@ -312,7 +333,7 @@ export default function BudgetPdf({ data }: BudgetPdfProps) {
         <View style={styles.section}>
           <View style={styles.table}>
             <View style={styles.tableRow}>
-              <Text style={styles.tableLabel}>Hospital</Text>
+              <Text style={styles.tableLabel}>Hospital (pago separadamente)</Text>
 
               <Text style={styles.tableValue}>
                 {currency(data.values.hospital)}
@@ -478,6 +499,135 @@ export default function BudgetPdf({ data }: BudgetPdfProps) {
           </View>
         </View>
       </Page>
+
+      {/* SEGUNDA PÁGINA - OBSERVAÇÕES */}
+      {data.printObservations && Boolean(data.observations?.trim()) && (
+        <Page size="A4" style={styles.page}>
+
+          {/* CABEÇALHO */}
+          <View style={styles.header}>
+            <View
+              style={[
+                styles.logo,
+                {
+                  justifyContent: "center",
+                  alignItems: "center",
+                },
+              ]}
+            >
+              <Image
+                src="/images/icon/logo.jpeg"
+                style={styles.logo}
+              />
+            </View>
+
+            <View style={styles.headerInfo}>
+              <Text style={styles.doctorName}>
+                DR. VICTOR GUIDA FRANÇA
+              </Text>
+
+              <View style={styles.specialtyRow}>
+                <Text style={styles.specialty}>
+                  CIRURGIA PLÁSTICA
+                </Text>
+
+                <Text style={styles.crm}>
+                  CRM:145760
+                </Text>
+              </View>
+            </View>
+          </View>
+
+          {/* DADOS DO PACIENTE */}
+          <View style={styles.patientSection}>
+            <View style={styles.patientRow}>
+              <Text style={styles.patientLabel}>
+                Paciente:
+              </Text>
+
+              <Text style={styles.patientValue}>
+                {data.patientName}
+              </Text>
+            </View>
+
+            <View style={styles.patientRow}>
+              <Text style={styles.patientLabel}>
+                Procedimento:
+              </Text>
+
+              <Text style={styles.patientValue}>
+                {data.surgery.name}
+              </Text>
+            </View>
+          </View>
+
+          {/* OBSERVAÇÕES */}
+          <View style={styles.observationsSection}>
+            <Text style={styles.observationsTitle}>
+              OBSERVAÇÕES
+            </Text>
+
+            <Text style={styles.observationsText}>
+              {data.observations}
+            </Text>
+          </View>
+
+          {/* RODAPÉ */}
+          <View style={styles.footer}>
+            <View style={styles.footerLine} />
+
+            <View style={styles.footerContent}>
+              <View style={styles.addresses}>
+                <Text style={styles.footerText}>
+                  • Pirajuí - SP | Rua Vol. Benedito Pimenta, 265 - Centro
+                </Text>
+
+                <Text style={styles.footerText}>
+                  • Garça - SP | Av. Dr. Rafael Paes de Barros, 168 - Centro
+                </Text>
+
+                <Text style={styles.footerText}>
+                  • Lins - SP | Rua Marques de Tamandaré, 598 - Vila Alta
+                </Text>
+              </View>
+
+              <View style={styles.contacts}>
+                <View style={styles.contactRow}>
+                  <Image
+                    src="/images/icon/phone.png"
+                    style={styles.contactIcon}
+                  />
+                  <Text style={styles.footerContact}>
+                    (14) 99612-9133
+                  </Text>
+                </View>
+
+                <View style={styles.contactRow}>
+                  <Image
+                    src="/images/icon/insta.png"
+                    style={styles.contactIcon}
+                  />
+                  <Text style={styles.footerContact}>
+                    @drvictorguidafranca
+                  </Text>
+                </View>
+
+                <View style={styles.contactRow}>
+                  <Image
+                    src="/images/icon/globe.png"
+                    style={styles.contactIcon}
+                  />
+                  <Text style={styles.footerContact}>
+                    www.drvictorguidafranca.com.br
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+
+        </Page>
+      )}
+
     </Document>
   );
 }
