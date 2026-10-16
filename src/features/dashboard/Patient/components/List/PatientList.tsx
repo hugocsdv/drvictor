@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect, useState } from "react";
@@ -14,20 +15,20 @@ import {
   Td,
   ActionButton,
 } from "./PatientList.styles";
-import { Patient } from "../../types/patient.types";
+
+import type { Patient } from "../../types/patient.types";
 import { patientsService } from "../../service/patients.service";
 
-
+import PatientDetailsModal from "../PatientDetailsModal/PatientDetailsModal";
 
 export default function PatientList() {
   const [patients, setPatients] = useState<Patient[]>([]);
+  const [selectedPatient, setSelectedPatient] =
+    useState<Patient | null>(null);
+
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    fetchPatients();
-  }, []);
 
   const fetchPatients = async () => {
     try {
@@ -38,10 +39,7 @@ export default function PatientList() {
 
       setPatients(data);
     } catch (error) {
-      console.error(
-        "Erro ao buscar pacientes:",
-        error,
-      );
+      console.error("Erro ao buscar pacientes:", error);
 
       setError(
         error instanceof Error
@@ -53,7 +51,13 @@ export default function PatientList() {
     }
   };
 
-  const formatCpf = (cpf: string) => {
+  useEffect(() => {
+    void fetchPatients();
+  }, []);
+
+  const formatCpf = (cpf?: string | null) => {
+    if (!cpf) return "-----";
+
     const numbers = cpf.replace(/\D/g, "");
 
     if (numbers.length !== 11) {
@@ -66,46 +70,43 @@ export default function PatientList() {
     );
   };
 
-  const formatDate = (value: string) => {
+  const formatDate = (value: string | Date) => {
+    const date = new Date(value);
+
+    if (Number.isNaN(date.getTime())) {
+      return "-----";
+    }
+
     return new Intl.DateTimeFormat("pt-BR", {
       day: "2-digit",
       month: "2-digit",
       year: "numeric",
-    }).format(new Date(value));
+    }).format(date);
   };
 
-  const search = searchTerm
-    .toLowerCase()
-    .trim();
+  const search = searchTerm.toLowerCase().trim();
 
-  const filteredPatients = patients.filter(
-    (patient) =>
-      patient.name
-        .toLowerCase()
-        .includes(search) ||
-      patient.cpf.includes(search) ||
-      patient.email
-        .toLowerCase()
-        .includes(search),
-  );
+  const filteredPatients = patients.filter((patient) => {
+    return (
+      patient.name.toLowerCase().includes(search) ||
+      (patient.cpf ?? "").includes(search) ||
+      (patient.email ?? "").toLowerCase().includes(search)
+    );
+  });
 
-  if (loading) {
+  if (loading && patients.length === 0) {
     return (
       <Container>
         <Title>Pacientes</Title>
-
-        <Description>
-          Carregando pacientes...
-        </Description>
+        <Description>Carregando pacientes...</Description>
       </Container>
     );
   }
 
-  if (error) {
+  if (error && patients.length === 0) {
     return (
       <Container>
         <Title>Pacientes</Title>
-
         <Description>
           Erro ao carregar pacientes: {error}
         </Description>
@@ -118,7 +119,8 @@ export default function PatientList() {
       <Title>Pacientes</Title>
 
       <Description>
-        Consulte os pacientes cadastrados na clínica.
+        Consulte, edite e gerencie os pacientes cadastrados
+        na clínica.
       </Description>
 
       <ControlsContainer>
@@ -150,26 +152,16 @@ export default function PatientList() {
                   <strong>{patient.name}</strong>
                 </Td>
 
-                <Td>
-                  {formatCpf(patient.cpf)}
-                </Td>
+                <Td>{formatCpf(patient.cpf)}</Td>
 
-                <Td>
-                  {patient.email}
-                </Td>
+                <Td>{patient.email || "-----"}</Td>
 
-                <Td>
-                  {formatDate(patient.createdAt)}
-                </Td>
+                <Td>{formatDate(patient.createdAt)}</Td>
 
                 <Td>
                   <ActionButton
-                    onClick={() =>
-                      console.log(
-                        "Paciente:",
-                        patient,
-                      )
-                    }
+                    type="button"
+                    onClick={() => setSelectedPatient(patient)}
                   >
                     Visualizar
                   </ActionButton>
@@ -187,6 +179,15 @@ export default function PatientList() {
           </tbody>
         </Table>
       </TableWrapper>
+
+      {selectedPatient && (
+        <PatientDetailsModal
+          patient={selectedPatient}
+          onClose={() => setSelectedPatient(null)}
+          onUpdated={fetchPatients}
+          onDeleted={fetchPatients}
+        />
+      )}
     </Container>
   );
 }

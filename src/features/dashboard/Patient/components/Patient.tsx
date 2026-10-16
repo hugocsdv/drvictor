@@ -16,6 +16,7 @@ import {
   SubmitButton,
 } from "./Patient.styles";
 import { patientsService } from "../service/patients.service";
+import { toast } from "sonner";
 
 
 export default function RegisterPatient() {
@@ -36,20 +37,26 @@ export default function RegisterPatient() {
     }));
   };
 
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!patientData.name.trim()) {
+      toast.warning("Informe o nome do paciente.");
+      return;
+    }
 
     try {
       setLoading(true);
 
       const patient = await patientsService.create({
-        name: patientData.name,
-        cpf: patientData.cpf,
-        email: patientData.email,
-        surgeries: []
+        name: patientData.name.trim(),
+        cpf: patientData.cpf.trim() || undefined,
+        email: patientData.email.trim() || undefined,
+        surgeries: [],
       });
 
-      console.log("Paciente cadastrado com sucesso:", patient);
+      toast.success("Paciente cadastrado com sucesso!", patient);
 
       setPatientData({
         name: "",
@@ -62,6 +69,7 @@ export default function RegisterPatient() {
       setLoading(false);
     }
   };
+
 
   return (
     <Card>
@@ -97,7 +105,7 @@ export default function RegisterPatient() {
               placeholder="000.000.000-00"
               value={patientData.cpf}
               onChange={handlePatientChange}
-              required
+
             />
           </FormGroup>
 
@@ -111,7 +119,7 @@ export default function RegisterPatient() {
               placeholder="exemplo@email.com"
               value={patientData.email}
               onChange={handlePatientChange}
-              required
+              required={false}
             />
           </FormGroup>
         </Grid>

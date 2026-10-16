@@ -8,6 +8,7 @@ import Footer from "@/components/layout/Footer";
 import { FooterProps } from "@/shared/types/footer.props";
 import { AuthProvider } from "@/features/auth/context/AuthContext";
 import { SignaturesProvider } from "@/providers/SignaturesProvider";
+import ToastProvider from "@/providers/ToastProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,6 +45,7 @@ export default function RootLayout({
           <Providers>
             <AuthProvider>
             <SignaturesProvider>
+            <ToastProvider />
             {children}
             </SignaturesProvider>
             <Footer {...footerMock} />

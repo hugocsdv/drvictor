@@ -84,13 +84,10 @@ export default function SurgeryTerm() {
         termTitle: formatTemplateName(
           templateName,
         ),
+        pdfUrl: templateName.toString(),
         templateName,
         isRequired,
       });
-
-      alert(
-        "Termo vinculado à cirurgia com sucesso.",
-      );
 
       setSurgeryId("");
       setTemplateName("");

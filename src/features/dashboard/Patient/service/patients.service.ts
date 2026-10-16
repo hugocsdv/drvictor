@@ -4,6 +4,7 @@ import { api } from "@/shared/services/api";
 import type {
   CreatePatientRequest,
   Patient,
+  UpdatePatientRequest,
 } from "../types/patient.types";
 
 export const patientsService = {
@@ -11,10 +12,10 @@ export const patientsService = {
     data: CreatePatientRequest,
   ): Promise<Patient> {
 
-    api<Patient>("/signatures", {
-      method: "POST",
-      body: JSON.stringify({patientSurgeryId: "6c0e8de9-0d23-4d79-91f5-2e14a1bdc0f6"}),
-    });
+    // api<Patient>("/signatures", {
+    //   method: "POST",
+    //   body: JSON.stringify({patientSurgeryId: "6c0e8de9-0d23-4d79-91f5-2e14a1bdc0f6"}),
+    // });
     return api<Patient>("/patients", {
       method: "POST",
       body: JSON.stringify(data),
@@ -31,7 +32,7 @@ export const patientsService = {
 
   async update(
     id: string,
-    data: Partial<CreatePatientRequest>,
+    data: Partial<UpdatePatientRequest>,
   ): Promise<Patient> {
     return api<Patient>(`/patients/${id}`, {
       method: "PATCH",

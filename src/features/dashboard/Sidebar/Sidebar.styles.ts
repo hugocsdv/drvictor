@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const Aside = styled.aside`
   width: 270px;
   min-width: 270px;
-  height: 100vh;
+  min-height: 100vh;
   position: sticky;
   top: 0;
 

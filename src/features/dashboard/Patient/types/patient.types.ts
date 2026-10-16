@@ -3,10 +3,17 @@ export interface SurgeryRegistration {
   surgeryDate: string;
 }
 
+export type UpdatePatientRequest = Partial<
+  Omit<CreatePatientRequest, "cpf" | "email">
+> & {
+  cpf?: string | null;
+  email?: string | null;
+};
+
 export interface CreatePatientRequest {
   name: string;
-  cpf: string;
-  email: string;
+  cpf: string | undefined;
+  email: string | undefined;
   surgeries: SurgeryRegistration[];
 }
 

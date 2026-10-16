@@ -16,7 +16,7 @@ import Budget from "@/features/dashboard/Budget/components";
 import BudgetList from "@/features/dashboard/Budget/components/List/BudgetList";
 
 export default function DashboardPage() {
-  const [activeTab, setActiveTab] = useState<TabOption>("terms");
+  const [activeTab, setActiveTab] = useState<TabOption>("patientList");
 
   return (
     <Container>
