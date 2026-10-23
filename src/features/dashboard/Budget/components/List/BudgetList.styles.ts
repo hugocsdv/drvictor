@@ -192,11 +192,21 @@ export const DetailItem = styled.div`
   flex-direction: column;
   gap: 6px;
   margin-bottom: 12px;
+  
+  strong {
+    font-size: 13px;
+    color: #b48263;
+  }
+
+  label {
+    font-size: 13px;
+    color: #222222;
+  }
 `;
 
 export const DetailLabel = styled.span`
   font-size: 12px;
-  color: #6b7280;
+  color: #2a2c30;
 `;
 
 export const DetailValue = styled.span`
