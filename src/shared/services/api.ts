@@ -66,7 +66,7 @@ export async function api<T>(
         : "Erro inesperado ao realizar requisição.";
 
     if (showErrorToast) {
-      //toast.error(message);
+      toast.error(message);
     }
 
     throw error;

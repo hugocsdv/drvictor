@@ -1,7 +1,14 @@
+import { SignaturesProvider } from "@/providers/SignaturesProvider";
+
 export default function DashboardLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return children;
+  
+  return (
+    <SignaturesProvider>
+      {children}
+    </SignaturesProvider>
+  );
 }

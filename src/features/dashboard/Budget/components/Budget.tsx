@@ -66,6 +66,16 @@ export default function Budget() {
     medicalTeamValue,
     setMedicalTeamValue,
   ] = useState(0);
+
+  const [hasStephanyDrainage, setHasStephanyDrainage] =
+    useState(false);
+
+  const [hasConventionalDrainage, setHasConventionalDrainage] =
+    useState(false);
+
+  const [hasHyperbaricOxygenTherapy, setHasHyperbaricOxygenTherapy] =
+    useState(false);
+
   const [
     postSurgicalKitValue,
     setPostSurgicalKitValue,
@@ -233,6 +243,9 @@ export default function Budget() {
         patientId,
         paymentMethod,
         "1",
+        hasStephanyDrainage,
+        hasConventionalDrainage,
+        hasHyperbaricOxygenTherapy,
       );
       // 2. Salva no banco de dados.
       const savedBudget = await budgetService.create(payload);
@@ -389,6 +402,42 @@ export default function Budget() {
               Possui Prótese
             </CheckboxLabel>
           </CheckboxGroup>
+
+          <CheckboxGroup>
+            <CheckboxLabel>
+              <Checkbox
+                type="checkbox"
+                checked={hasStephanyDrainage}
+                onChange={(event) =>
+                  setHasStephanyDrainage(event.target.checked)
+                }
+              />
+              Drenagem Stephany
+            </CheckboxLabel>
+
+            <CheckboxLabel>
+              <Checkbox
+                type="checkbox"
+                checked={hasConventionalDrainage}
+                onChange={(event) =>
+                  setHasConventionalDrainage(event.target.checked)
+                }
+              />
+              Drenagem convencional
+            </CheckboxLabel>
+
+            <CheckboxLabel>
+              <Checkbox
+                type="checkbox"
+                checked={hasHyperbaricOxygenTherapy}
+                onChange={(event) =>
+                  setHasHyperbaricOxygenTherapy(event.target.checked)
+                }
+              />
+              Oxigenoterapia hiperbárica
+            </CheckboxLabel>
+          </CheckboxGroup>
+
           <Grid>
             {hasLipo && (
               <Field>

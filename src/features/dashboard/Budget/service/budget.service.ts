@@ -43,6 +43,12 @@ export interface CreateBudgetRequest {
 
     observations: string;
     printObservations: boolean;
+
+    hasStephanyDrainage?: boolean
+
+    hasConventionalDrainage?: boolean
+
+    hasHyperbaricOxygenTherapy?: boolean
 }
 
 export interface BudgetResponse extends CreateBudgetRequest {
@@ -69,6 +75,9 @@ export const budgetService = {
         patientId: string,
         paymentMethod: PaymentMethod,
         clinicId = "1",
+        hasStephanyDrainage: boolean,
+        hasConventionalDrainage: boolean,
+        hasHyperbaricOxygenTherapy: boolean,
     ): CreateBudgetRequest {
         return {
             patientId,
@@ -117,6 +126,10 @@ export const budgetService = {
 
             observations: budget.observations,
             printObservations: budget.printObservations,
+
+            hasConventionalDrainage: hasConventionalDrainage,
+            hasHyperbaricOxygenTherapy: hasHyperbaricOxygenTherapy,
+            hasStephanyDrainage: hasStephanyDrainage
         };
     },
 

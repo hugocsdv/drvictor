@@ -44,10 +44,10 @@ export default function RootLayout({
         <StyledComponentsRegistry>
           <Providers>
             <AuthProvider>
-            <SignaturesProvider>
+            
             <ToastProvider />
             {children}
-            </SignaturesProvider>
+        
             <Footer {...footerMock} />
             </AuthProvider>
           </Providers>
