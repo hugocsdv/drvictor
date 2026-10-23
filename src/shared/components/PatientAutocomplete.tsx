@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { PatientOption, patientsService } from "../services/patient.service";
 import { Input } from "@/features/dashboard/Budget/components/Budget.styles";
+import { PatientInfo, PatientName, PatientCpf } from "./styles";
 
 
 interface Props {
@@ -120,9 +121,10 @@ export default function PatientAutocomplete({ value, onChange }: Props) {
                 }}
               >
                 <strong>{patient.name}</strong>
-                <div style={{ fontSize: 12, color: "#6B7280" }}>
-                  CPF: {patient.cpf}
-                </div>
+                <PatientInfo>
+                  <PatientName>Nome: {patient.name}</PatientName>
+                  <PatientCpf>CPF: {patient.cpf}</PatientCpf>
+                </PatientInfo>
               </button>
             ))}
         </div>
