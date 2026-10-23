@@ -87,6 +87,10 @@ export default function BudgetDetailsModal({
     paymentMethod: budget.paymentMethod as PaymentMethod,
     downPaymentPercentage: budget.downPaymentPercentage,
 
+    hasConventionalDrainage: budget.hasConventionalDrainage,
+    hasHyperbaricOxygenTherapy: budget.hasHyperbaricOxygenTherapy,
+    hasStephanyDrainage: budget.hasStephanyDrainage,
+
     observations: budget.observations || "",
     printObservations: budget.printObservations,
   }));
@@ -173,6 +177,10 @@ export default function BudgetDetailsModal({
 
         hasLipo: form.hasLipo,
         hasProsthesis: form.hasProsthesis,
+
+        hasConventionalDrainage: form.hasConventionalDrainage,
+        hasHyperbaricOxygenTherapy: form.hasHyperbaricOxygenTherapy,
+        hasStephanyDrainage: form.hasStephanyDrainage,
 
         hospitalValue: roundMoney(form.hospitalValue),
         medicalTeamValue: roundMoney(form.medicalTeamValue),
@@ -359,6 +367,51 @@ export default function BudgetDetailsModal({
 
               {form.hasProsthesis &&
                 currencyField("Prótese", "prosthesisValue")}
+            </DetailGrid>
+
+            <DetailTitle>Procedimentos adicionais</DetailTitle>
+            <DetailGrid>
+              <DetailItem>
+                <label>
+                  <input
+                    type="checkbox"
+                    checked={form.hasStephanyDrainage}
+                    onChange={(event) =>
+                      setField("hasStephanyDrainage", event.target.checked)
+                    }
+                  />
+                  {" "}Drenagem de Stephany
+                </label>
+              </DetailItem>
+
+              <DetailItem>
+                <label>
+                  <input
+                    type="checkbox"
+                    checked={form.hasConventionalDrainage}
+                    onChange={(event) =>
+                      setField("hasConventionalDrainage", event.target.checked)
+                    }
+                  />
+                  {" "}Drenagens (Geral/Convencional)
+                </label>
+              </DetailItem>
+
+              <DetailItem>
+                <label>
+                  <input
+                    type="checkbox"
+                    checked={form.hasHyperbaricOxygenTherapy}
+                    onChange={(event) =>
+                      setField(
+                        "hasHyperbaricOxygenTherapy",
+                        event.target.checked,
+                      )
+                    }
+                  />
+                  {" "}Oxigenoterapia Hiperbárica
+                </label>
+              </DetailItem>
             </DetailGrid>
 
             <TotalBox>

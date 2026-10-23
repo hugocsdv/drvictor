@@ -38,6 +38,10 @@ export interface BudgetDetails {
   status: string;
   createdAt: string;
 
+  hasConventionalDrainage: boolean,
+  hasHyperbaricOxygenTherapy: boolean,
+  hasStephanyDrainage: boolean
+
   patient?: {
     id: string;
     name: string;
